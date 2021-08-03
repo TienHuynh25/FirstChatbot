@@ -54,13 +54,12 @@ if __name__ == '__main__':
             return self.n_samples
 
     #hyperparameters
-    batch_size = 25
+    batch_size = 20
     hidden_size = 32
     output_size = len(tags)
     input_size = len(X_train[0])
     learning_rate = 0.0001
     num_epochs = 1000
-    print()
 
 
     dataset = ChatDataset()
