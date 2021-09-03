@@ -16,14 +16,6 @@ if __name__ == '__main__':
     tags = []
     xy = []
 
-    #hyperparameters
-    batch_size = 20
-    hidden_size = 32
-    output_size = len(tags)
-    input_size = len(X_train[0])
-    learning_rate = 0.0001
-    num_epochs = 1000
-
     X_train = []
     y_train = []
 
@@ -53,6 +45,14 @@ if __name__ == '__main__':
     X_train = np.array(X_train)
     y_train = np.array(y_train)
 
+    #hyperparameters
+    batch_size = 20
+    hidden_size = 32
+    output_size = len(tags)
+    input_size = len(X_train[0])
+    learning_rate = 0.0001
+    num_epochs = 1000
+
     class ChatDataset(Dataset):
         
         def __init__(self):
@@ -76,8 +76,8 @@ if __name__ == '__main__':
 
     #loss and optimizer
     criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
-
+    optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate, weight_decay=0.0001)
+     
     for epoch in range(num_epochs):
         for(words, labels) in train_loader:
             words = words.to(device)

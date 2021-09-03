@@ -11,7 +11,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 with open('Z:\Study\Python3\ChatBot\intents.json', 'r') as f:
     intents = json.load(f)
 
-FILE= 'data.pth'
+FILE = 'data.pth'
 data = torch.load(FILE)
 
 #loading saved data
