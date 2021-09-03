@@ -1,7 +1,7 @@
 # Chatbot featuring Loki characteristic     
 ------------------------------------    
 Loki can be your "friend" who you can talk to whenever you are feeling stressed or just simply bored af         
-Eventhough he claims he is smart, he is quite a bit retarded due to the lacks in skills of the practitioner :))) :`(      
+Eventhough he claims he is smart, he is quite a bit retarded both physically and mentally due to the lacks in skills of the practitioner :))) :`(      
 
 ### Feature     
 Some well-known libraries in python: nltk, np, torch, random.    
