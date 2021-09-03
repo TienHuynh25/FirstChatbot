@@ -4,6 +4,8 @@ import torch
 from model import NeuralNet
 from nltk_utils import bag_of_words, tokenize
 
+bot_name = "Loki"
+
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 with open('Z:\Study\Python3\ChatBot\intents.json', 'r') as f:
@@ -12,6 +14,7 @@ with open('Z:\Study\Python3\ChatBot\intents.json', 'r') as f:
 FILE= 'data.pth'
 data = torch.load(FILE)
 
+#loading saved data
 input_size = data["input_size"]
 hidden_size = data["hidden_size"]
 output_size = data["output_size"]
@@ -23,7 +26,6 @@ model = NeuralNet(input_size, hidden_size, output_size).to(device)
 model.load_state_dict(model_state)
 model.eval()
 
-bot_name = "Loki"
 
 def get_response(message):
     sentence = tokenize(message)

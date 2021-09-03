@@ -8,12 +8,26 @@ from torch.utils.data import Dataset, DataLoader
 from model import NeuralNet
 
 if __name__ == '__main__':
+
     with open('Z:\Study\Python3\ChatBot\intents.json', 'r') as f:
         intents = json.load(f)
 
     all_words = []
     tags = []
     xy = []
+
+    #hyperparameters
+    batch_size = 20
+    hidden_size = 32
+    output_size = len(tags)
+    input_size = len(X_train[0])
+    learning_rate = 0.0001
+    num_epochs = 1000
+
+    X_train = []
+    y_train = []
+
+
     for intent in intents['intents']:
         tag = intent['tag']
         tags.append(tag)
@@ -22,13 +36,13 @@ if __name__ == '__main__':
             all_words.extend(w) #using extend because we dont want array of array here
             xy.append((w, tag))
 
+
     ignore_words = ['?', '!', '.', ',']
     all_words = [stem(w) for w in all_words if w not in ignore_words]
     all_words = sorted(set(all_words))
     tags = sorted(set(tags))
+    
 
-    X_train = []
-    y_train = []
     for (pattern_sentence, tag) in xy:
         bag = bag_of_words(pattern_sentence, all_words)
         X_train.append(bag)
@@ -52,14 +66,6 @@ if __name__ == '__main__':
 
         def __len__(self):
             return self.n_samples
-
-    #hyperparameters
-    batch_size = 20
-    hidden_size = 32
-    output_size = len(tags)
-    input_size = len(X_train[0])
-    learning_rate = 0.0001
-    num_epochs = 1000
 
 
     dataset = ChatDataset()
